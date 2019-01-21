@@ -5,7 +5,6 @@ import android.os.Build
 import android.webkit.WebView
 import androidx.multidex.MultiDexApplication
 import com.github.ajalt.timberkt.Timber.d
-import de.thecode.android.tazreader.analytics.AnalyticsWrapper
 import de.thecode.android.tazreader.data.*
 import de.thecode.android.tazreader.download.TazDownloadManager
 import de.thecode.android.tazreader.eventbus.EventBusIndex
@@ -84,7 +83,6 @@ class TazApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        AnalyticsWrapper.initialize(app)
         TimberHelper.initialize(app)
         BuildTypeProvider.installStetho(app)
         EventBus.builder()

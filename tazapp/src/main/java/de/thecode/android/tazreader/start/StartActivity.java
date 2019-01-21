@@ -29,7 +29,6 @@ import de.mateware.snacky.Snacky;
 import de.thecode.android.tazreader.BuildConfig;
 import de.thecode.android.tazreader.R;
 import de.thecode.android.tazreader.TazApplicationKt;
-import de.thecode.android.tazreader.analytics.AnalyticsWrapper;
 import de.thecode.android.tazreader.data.Download;
 import de.thecode.android.tazreader.data.DownloadEvent;
 import de.thecode.android.tazreader.data.DownloadState;
@@ -668,12 +667,6 @@ public class StartActivity extends BaseActivity
 //                    intent.putExtra(ReaderActivity.KEY_EXTRA_RESOURCE_KEY, resource.getKey());
                                                                                           startActivity(intent);
                                                                                       } else {
-                                                                                          AnalyticsWrapper.getInstance()
-                                                                                                          .logData("PAPER",
-                                                                                                                   paper.toString());
-                                                                                          AnalyticsWrapper.getInstance()
-                                                                                                          .logData("RESOURCE",
-                                                                                                                   resource.toString());
                                                                                           switch (Connection.getConnectionType(
                                                                                                   StartActivity.this)) {
                                                                                               case Connection.CONNECTION_NOT_AVAILABLE:
