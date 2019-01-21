@@ -15,8 +15,6 @@ class AskForHelpDialog : DialogFragment() {
             return MaterialDialog(it).title(R.string.dialog_ask_for_help_title)
                     .message(res = R.string.dialog_ask_for_help_message)
                     .positiveButton { _ ->
-                        TazSettings.getInstance(dialog.context)
-                                .crashlyticsAlwaysSend = true
                         TazSettings.getInstance(dialog.context).isAskForHelpAllowed = false
                     }
                     .negativeButton(R.string.dialog_button_no) { _ ->

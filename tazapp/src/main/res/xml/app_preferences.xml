@@ -174,10 +174,6 @@
             <!--android:title="@string/category_debug">-->
 
         <!--<SwitchPreferenceCompat-->
-                <!--android:key="@string/pref_key_crashlytics_always_send"-->
-                <!--app:singleLineTitle="false"-->
-                <!--android:title="@string/pref_title_crashlytics_always_send"/>-->
-        <!--<SwitchPreferenceCompat-->
                 <!--android:key="@string/pref_key_log_file"-->
                 <!--app:singleLineTitle="false"-->
                 <!--android:title="@string/pref_title_log_file"-->

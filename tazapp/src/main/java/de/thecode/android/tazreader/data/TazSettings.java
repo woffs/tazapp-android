@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
-import com.crashlytics.android.core.CrashlyticsCore;
 import com.scottyab.aescrypt.AESCrypt;
 
 import de.thecode.android.tazreader.BuildConfig;
@@ -79,7 +78,6 @@ public final class TazSettings implements SharedPreferences.OnSharedPreferenceCh
         public static final  String FIREBASETOKEN               = "firebaseToken";
         private static final String FIREBASETOKENOLD            = "firebaseTokenOld";
         public static final  String NOTIFICATION_PUSH           = "notification_push";
-        public static final  String CRASHLYTICS_ALWAYS_SEND     = "always_send_reports_opt_in";
         private static final String LATEST_VERSION              = "latestVersion";
         public static final  String LOGFILE                     = "logfile";
         public static final  String DATA_FOLDER                 = "storageFolder";
@@ -90,7 +88,6 @@ public final class TazSettings implements SharedPreferences.OnSharedPreferenceCh
 
     private static TazSettings       instance;
     private        SharedPreferences sharedPreferences;
-    private        SharedPreferences crashlyticsSharedPreferences;
     private        Resources         resources;
 
 
@@ -101,8 +98,6 @@ public final class TazSettings implements SharedPreferences.OnSharedPreferenceCh
 
     private TazSettings(Context context) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        crashlyticsSharedPreferences = context.getSharedPreferences("com.crashlytics.sdk.android.crashlytics-core:" + CrashlyticsCore.class.getName(),
-                                                                    Context.MODE_PRIVATE);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
         resources = context.getResources();
     }
@@ -245,16 +240,6 @@ public final class TazSettings implements SharedPreferences.OnSharedPreferenceCh
         editor.putString(PREFKEY.FIREBASETOKEN, token)
               .apply();
         //PushRestApiJob.scheduleJob();
-    }
-
-    public void setCrashlyticsAlwaysSend(boolean alwaysSend) {
-        crashlyticsSharedPreferences.edit()
-                                    .putBoolean(PREFKEY.CRASHLYTICS_ALWAYS_SEND, alwaysSend)
-                                    .apply();
-    }
-
-    public boolean getCrashlyticsAlwaysSend() {
-        return crashlyticsSharedPreferences.getBoolean(PREFKEY.CRASHLYTICS_ALWAYS_SEND, false);
     }
 
     public SharedPreferences getSharedPreferences() {
