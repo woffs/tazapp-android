@@ -78,14 +78,14 @@ class TazDownloadManager private constructor() {
     }
 
     @WorkerThread
-    fun downloadResource(key: String, wifiOnly: Boolean = false): Result {
+    fun downloadResource(key: String, wifiOnly: Boolean = false, override: Boolean = false): Result {
         val resource = resourceRepository.getWithKey(key)
         d { "requesting resource download for resource $resource" }
         val download = resourceRepository.getDownload(key)
         d { "download $download" }
         val result = Result(download = download)
         if (download.state != DownloadState.NONE) {
-            if (download.state == DownloadState.DOWNLOADING) {
+            if (download.state == DownloadState.DOWNLOADING || override) {
                 systemDownloadManager.remove(download.downloadManagerId)
                 download.downloadManagerId = 0
                 download.state = DownloadState.NONE
@@ -259,9 +259,9 @@ class TazDownloadManager private constructor() {
                 val result = SystemDownloadManagerInfo()
                 result.downloadId = cursor.getLong(cursor.getColumnIndex(android.app.DownloadManager.COLUMN_ID))
                 result.status = SystemDownloadManagerInfo.STATE.fromInt(cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)))
-                result.statusText = res.getString(app.getStringIdByName("download_status_" + result.status))
+                result.statusText = try { res.getString(app.getStringIdByName("download_status_" + result.status)) } catch (e: Exception) { "status: ${result.status}" }
                 result.reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON))
-                result.reasonText = res.getString(app.getStringIdByName("download_reason_" + result.reason))
+                result.reasonText = try { res.getString(app.getStringIdByName("download_reason_" + result.reason)) } catch (e: Exception) { "reason: ${result.reason}" }
                 result.bytesDownloadedSoFar = cursor.getLong(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR))
                 result.totalSizeBytes = cursor.getLong(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES))
                 result.uri = try {
