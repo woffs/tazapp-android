@@ -51,7 +51,6 @@ import de.thecode.android.tazreader.start.importer.ImportFragment;
 import de.thecode.android.tazreader.start.library.LibraryFragment;
 import de.thecode.android.tazreader.sync.AccountHelper;
 import de.thecode.android.tazreader.sync.SyncErrorEvent;
-import de.thecode.android.tazreader.update.Update;
 import de.thecode.android.tazreader.utils.AsyncTaskListener;
 import de.thecode.android.tazreader.utils.BaseActivity;
 import de.thecode.android.tazreader.utils.Charsets;
@@ -313,7 +312,6 @@ public class StartActivity extends BaseActivity
 //                       .getSyncServiceNextRun() == 0) SyncHelper.requestSync(this);
         //Intent intent = getIntent();
         openReaderFromDownloadNotificationIntent(getIntent());
-        checkForNewerVersion();
         startViewModel.getDownloadErrorLiveSingleData()
                       .observe(this, new Observer<TazDownloadManager.Result>() {
                           @Override
@@ -349,22 +347,6 @@ public class StartActivity extends BaseActivity
                    });
 
 
-    }
-
-    public void checkForNewerVersion() {
-        Update updateHelper = TazApplicationKt.getUpdate();
-        if (updateHelper.updateAvailable() && !updateHelper.getUpdateMessageShown()) {
-            updateHelper.setUpdateMessageShown(true);
-            if (getSupportFragmentManager().findFragmentByTag(DIALOG_UPDATE_AVAILABLE) == null) {
-                new Dialog.Builder().setCancelable(true)
-                                    .setTitle(R.string.dialog_update_available_title)
-                                    .setMessage(getString(R.string.dialog_update_available_message, getString(R.string.app_name)))
-                                    .setPositiveButton(R.string.dialog_update_available_ok)
-                                    .setNegativeButton(R.string.dialog_update_available_no)
-                                    .buildSupport()
-                                    .show(getSupportFragmentManager(), DIALOG_UPDATE_AVAILABLE);
-            }
-        }
     }
 
     private void openReaderFromDownloadNotificationIntent(Intent intent) {
@@ -966,12 +948,6 @@ public class StartActivity extends BaseActivity
                     break;
                 case Dialog.BUTTON_NEUTRAL:
                     mDrawerFragment.simulateClick(preferencesItem, true);
-                    break;
-            }
-        } else if (DIALOG_UPDATE_AVAILABLE.equals(tag)) {
-            switch (which) {
-                case Dialog.BUTTON_POSITIVE:
-                    TazApplicationKt.getUpdate().update();
                     break;
             }
         }

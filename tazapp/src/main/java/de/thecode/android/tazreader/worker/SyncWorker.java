@@ -167,10 +167,6 @@ public class SyncWorker extends LoggingWorker {
 
         publicationRepository.savePublication(publication);
 
-        TazApplicationKt.getUpdate()
-                        .setLatestVersion(publication.getAppAndroidVersion());
-
-
         NSObject[] issues = ((NSArray) root.objectForKey(PLIST_KEY_ISSUES)).getArray();
         List<Paper> newPapers = new ArrayList<>();
         for (NSObject issue : issues) {

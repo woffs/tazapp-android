@@ -13,7 +13,6 @@ import de.thecode.android.tazreader.picasso.PicassoHelper
 import de.thecode.android.tazreader.reader.ReaderActivity
 import de.thecode.android.tazreader.sync.AccountHelper
 import de.thecode.android.tazreader.timber.TimberHelper
-import de.thecode.android.tazreader.update.Update
 import de.thecode.android.tazreader.utils.BuildTypeProvider
 import de.thecode.android.tazreader.utils.StorageManager
 import de.thecode.android.tazreader.utils.UserDeviceInfo
@@ -57,10 +56,6 @@ val notificationUtils: NotificationUtils by lazy {
 }
 
 val settings: TazSettings by lazy { TazSettings.getInstance(app) }
-
-val update: Update by lazy {
-    Update.getInstance()
-}
 
 val accountHelper: AccountHelper by lazy { AccountHelper.getInstance(app) }
 

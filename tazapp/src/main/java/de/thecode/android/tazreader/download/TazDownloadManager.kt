@@ -116,56 +116,6 @@ class TazDownloadManager private constructor() {
         return result
     }
 
-    @WorkerThread
-    fun downloadUpdate() {
-        val downloads = downloadsRepository.get(DownloadType.UPDATE)
-        downloads.forEach {
-            systemDownloadManager.remove(it.downloadManagerId)
-            downloadsRepository.delete(it)
-        }
-
-        val supportedArchs = userDeviceInfo.supportedArchList
-        var arch: String? = null
-        if (supportedArchs != null && supportedArchs.size > 0) {
-            var bestArch = 0
-            for (supportedArch in supportedArchs) {
-                val newArch = UserDeviceInfo.getWeightForArch(supportedArch)
-                if (newArch > bestArch) bestArch = newArch
-            }
-            if (bestArch == 2 || bestArch == 3 || bestArch == 6 || bestArch == 7) {
-                //Filter for build archTypes
-                arch = UserDeviceInfo.getArchForWeight(bestArch)
-            }
-            if (arch.isNullOrBlank()) arch = "universal"
-        }
-
-
-        val fileName = StringBuilder("tazapp-").append(BuildConfig.FLAVOR)
-                .append("-")
-                .append(arch)
-                .append("-")
-                .append(BuildConfig.BUILD_TYPE)
-                .append(".apk")
-
-        val uri = Uri.parse(BuildConfig.APKURL)
-                .buildUpon()
-                .appendEncodedPath(fileName.toString())
-                .build()
-
-        val updateFile = File(storageManager.updateAppCache, fileName.toString())
-
-        val request = createRequest(
-                downloadUri = uri,
-                destinationFile = updateFile,
-                title = res.getString(R.string.update_app_download_notification, res.getString(R.string.app_name)),
-                notificationVisility = DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED,
-                visibleInDownloadUi = true,
-                mimeType = "application/vnd.android.package-archive"
-        )
-        systemDownloadManager.enqueue(request)
-
-    }
-
     fun cancelDownload(downloadId: Long) {
         val download = downloadsRepository.get(downloadId)
         systemDownloadManager.remove(downloadId)

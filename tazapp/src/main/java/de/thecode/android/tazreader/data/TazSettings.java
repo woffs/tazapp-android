@@ -78,7 +78,6 @@ public final class TazSettings implements SharedPreferences.OnSharedPreferenceCh
         public static final  String FIREBASETOKEN               = "firebaseToken";
         private static final String FIREBASETOKENOLD            = "firebaseTokenOld";
         public static final  String NOTIFICATION_PUSH           = "notification_push";
-        private static final String LATEST_VERSION              = "latestVersion";
         public static final  String LOGFILE                     = "logfile";
         public static final  String DATA_FOLDER                 = "storageFolder";
         public static final  String ASK_HELP_ALLOWED            = "askHelpAllowed";
@@ -315,17 +314,6 @@ public final class TazSettings implements SharedPreferences.OnSharedPreferenceCh
                          .putBoolean(PREFKEY.INDEXALWAYSEXPANDED, isAlwaysExpanded)
                          .apply();
     }
-
-    public void setLatestVersion(int latestVersion) {
-        sharedPreferences.edit()
-                         .putInt(PREFKEY.LATEST_VERSION, latestVersion)
-                         .apply();
-    }
-
-    public int getLatestVersion() {
-        return sharedPreferences.getInt(PREFKEY.LATEST_VERSION, BuildConfig.VERSION_CODE);
-    }
-
 
     public boolean isTapBorderToTurnPage() {
         return sharedPreferences.getBoolean(PREFKEY.PAGETAPBORDERTOTURN, true);

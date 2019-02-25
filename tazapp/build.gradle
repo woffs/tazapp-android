@@ -9,8 +9,6 @@ def compileSdkVer = 28
 def targetSdkVer = 28
 def minSdkVer = 16
 
-def apkUrl = '"https://dl.taz.de/down/apk/"'
-
 def tazPlist = '"https://dl.taz.de/tpaperIssue.plist"'
 def tazPlistArchiv = '"https://dl.taz.de/tpaperIssue.plist?start=%1$s&end=%2$s"'
 def tazStagingPlist = '"https://dl.taz.de/tpaperIssueTest.plist"'
@@ -100,7 +98,6 @@ android {
                              "room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
-        buildConfigField 'String', 'APKURL', apkUrl
     }
     splits {
         abi {
