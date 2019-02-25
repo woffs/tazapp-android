@@ -21,7 +21,7 @@ def tazResourceUrl = '"https://dl.taz.de/ressourcen"'
 def tazArchiveUrl = '"https://dl.taz.de/tpaperArchiv"'
 def tazPushRestUrl = '"https://dl.taz.de/tpaperPushInfo"'
 def tazStagingPushRestUrl = '"https://dl.taz.de/tpaperPushInfoTest"'
-def tazErrorMail = '"app@taz.de"'
+def tazErrorMail = '"app-fdroid@taz.de"'
 
 def lmdPlist = '"https://dl.monde-diplomatique.de/tpaperIssue.plist"'
 def lmdPlistArchiv = '"https://dl.monde-diplomatique.de/tpaperIssue.plist?start=%1$s&end=%2$s"'
