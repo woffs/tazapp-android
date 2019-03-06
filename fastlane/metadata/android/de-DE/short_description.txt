@@ -1,1 +1,1 @@
-taz.app: Täglich die neueste Ausgabe der "tageszeitung" (taz) direkt auf Ihr Smartphone oder Tablet.
+Täglich die taz direkt auf Smartphone/Tablet
