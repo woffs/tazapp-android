@@ -11,24 +11,6 @@ import de.thecode.android.tazreader.R;
 
 public class MuPDFCore
 {
-	/* load our native library */
-	private static boolean gs_so_available = false;
-	static {
-		System.out.println("Loading dll");
-		System.loadLibrary("mupdf_java32");
-		System.out.println("Loaded dll");
-		if (gprfSupportedInternal())
-		{
-			try {
-				System.loadLibrary("gs");
-				gs_so_available = true;
-			}
-			catch (UnsatisfiedLinkError e) {
-				gs_so_available = false;
-			}
-		}
-	}
-
 	/* Readable members */
 	private int numPages = -1;
 	private float pageWidth;
@@ -378,9 +360,7 @@ public class MuPDFCore
 	}
 
 	public static boolean gprfSupported() {
-		if (gs_so_available == false)
-			return false;
-		return gprfSupportedInternal();
+    return false;
 	}
 
 	public boolean canProof()
