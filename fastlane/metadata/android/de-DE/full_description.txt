@@ -11,3 +11,9 @@ Der Bezug ist über ein Abonnement möglich. Kostenlose Demoausgaben
 bieten die Möglichkeit, alle Funktionen zu testen.
 
 Weitere Infos unter https://taz.de/android
+
+Für diese F-Droid-kompatible Variante der App wurden u.a.
+Google-Push-Benachrichtigungen und automatische Bugreports entfernt.
+
+AntiFeature: NonFreeNet - Voraussetzung zur Nutzung ist ein digitales
+Abonnement der taz.
