@@ -42,6 +42,7 @@ import de.thecode.android.tazreader.dialog.ArchiveDialog;
 import de.thecode.android.tazreader.dialog.ArchiveEntry;
 import de.thecode.android.tazreader.dialog.HelpDialog;
 import de.thecode.android.tazreader.dialognew.AskForHelpDialog;
+import de.thecode.android.tazreader.dialognew.CancelDownloadDialog;
 import de.thecode.android.tazreader.download.TazDownloadManager;
 import de.thecode.android.tazreader.importer.ImportActivity;
 import de.thecode.android.tazreader.migration.MigrationActivity;
@@ -54,6 +55,7 @@ import de.thecode.android.tazreader.sync.SyncErrorEvent;
 import de.thecode.android.tazreader.utils.AsyncTaskListener;
 import de.thecode.android.tazreader.utils.BaseActivity;
 import de.thecode.android.tazreader.utils.Charsets;
+import de.thecode.android.tazreader.utils.ConnectionInfo;
 import de.thecode.android.tazreader.utils.Connection;
 import de.thecode.android.tazreader.utils.StreamUtils;
 import de.thecode.android.tazreader.utils.UserDeviceInfo;
@@ -63,6 +65,7 @@ import de.thecode.android.tazreader.worker.SyncWorker;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -88,7 +91,7 @@ import timber.log.Timber;
  * Created by mate on 27.01.2015.
  */
 public class StartActivity extends BaseActivity
-        implements DialogButtonListener, DialogDismissListener, DialogCancelListener, DialogAdapterListListener {
+        implements CancelDownloadDialog.CancelDownloadDialogListener, DialogButtonListener, DialogDismissListener, DialogCancelListener, DialogAdapterListListener {
 
     //private static final String DIALOG_FIRST                 = "dialogFirst";
     private static final String DIALOG_USER_REENTER          = "dialogUserReenter";
@@ -471,12 +474,13 @@ public class StartActivity extends BaseActivity
 
 
     public void startDownload(Paper downloadPaper) {
-        switch (Connection.getConnectionType(this)) {
-            case Connection.CONNECTION_NOT_AVAILABLE:
+        ConnectionInfo info = Connection.Companion.getConnectionInfo();
+        switch (info.getType()) {
+            case NOT_AVAILABLE:
                 showNoConnectionDialog();
                 break;
-            case Connection.CONNECTION_MOBILE:
-            case Connection.CONNECTION_MOBILE_ROAMING:
+            case MOBILE:
+            case ROAMING:
                 addToDownloadQueue(downloadPaper.getBookId());
                 if (startViewModel.isMobileDownloadAllowed()) startViewModel.startDownloadQueue();
                 else showMobileConnectionDialog();
@@ -649,9 +653,9 @@ public class StartActivity extends BaseActivity
 //                    intent.putExtra(ReaderActivity.KEY_EXTRA_RESOURCE_KEY, resource.getKey());
                                                                                           startActivity(intent);
                                                                                       } else {
-                                                                                          switch (Connection.getConnectionType(
-                                                                                                  StartActivity.this)) {
-                                                                                              case Connection.CONNECTION_NOT_AVAILABLE:
+                                                                                          ConnectionInfo info = Connection.Companion.getConnectionInfo();
+                                                                                          switch (info.getType()) {
+                                                                                              case NOT_AVAILABLE:
                                                                                                   Timber.e(new ConnectException(
                                                                                                           "Keine Verbindung"));
                                                                                                   showErrorDialog(getString(R.string.message_resource_not_downloaded_no_connection),
@@ -1001,5 +1005,10 @@ public class StartActivity extends BaseActivity
                           .clear();
 //            retainDataFragment.downloadQueue.clear();
         }
+    }
+
+    @Override
+    public void onCancelDownload(@NotNull String bookId) {
+        startViewModel.deletePaper(bookId);
     }
 }
