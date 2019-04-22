@@ -14,7 +14,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
-import androidx.annotation.Nullable;
+import javax.annotation.Nullable;
+
 import kotlin.io.FilesKt;
 import timber.log.Timber;
 

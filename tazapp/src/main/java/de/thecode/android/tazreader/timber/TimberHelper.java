@@ -6,6 +6,9 @@ import android.util.Log;
 
 import de.thecode.android.tazreader.BuildConfig;
 import de.thecode.android.tazreader.data.TazSettings;
+import de.thecode.android.tazreader.utils.ExtensionsKt;
+import de.thecode.android.tazreader.utils.StorageManager;
+
 
 import timber.log.Timber;
 
@@ -57,10 +60,9 @@ public class TimberHelper extends ContextWrapper {
         if (writeToFile) {
             fileLoggingTree = new FLTimberTree(this);
             Timber.plant(fileLoggingTree);
+        } else {
+            ExtensionsKt.deleteQuietly(StorageManager.getInstance(this).getLogCache());
         }
-//         else {
-//            ExtensionsKt.deleteQuietly(StorageManager.getInstance(this).getLogCache());
-//        }
     }
 
 }

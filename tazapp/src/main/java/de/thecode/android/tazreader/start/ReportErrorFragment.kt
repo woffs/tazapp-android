@@ -17,14 +17,16 @@ class ReportErrorFragment : PreferenceFragmentCompat() {
 
 
     private val logFileListener = TazSettings.OnPreferenceChangeListener<Boolean> {
-        logFileWritePreference?.isChecked = it
+        logFileWritePreference.isChecked = it
     }
 
     val settings: TazSettings by lazy {
         TazSettings.getInstance(context)
     }
 
-    private var logFileWritePreference : SwitchPreferenceCompat? = null
+    private val logFileWritePreference by lazy {
+        findPreference(getString(R.string.pref_key_log_file)) as SwitchPreferenceCompat
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as StartActivity).onUpdateDrawer(this)
@@ -45,14 +47,14 @@ class ReportErrorFragment : PreferenceFragmentCompat() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         settings.addOnPreferenceChangeListener(TazSettings.PREFKEY.LOGFILE, logFileListener )
     }
 
-    override fun onPause() {
+    override fun onStop() {
         settings.removeOnPreferenceChangeListener { logFileListener }
-        super.onPause()
+        super.onStop()
     }
 }
 
