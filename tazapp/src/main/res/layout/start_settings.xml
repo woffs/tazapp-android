@@ -290,20 +290,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/notification_vibrate"/>
 
-
-            <View style="@style/SettingsDivider"/>
-
-            <TextView
-                    style="@style/SettingsHeadline"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/header_other"/>
-
-            <CheckBox
-                    style="@style/SettingsCheckbox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
