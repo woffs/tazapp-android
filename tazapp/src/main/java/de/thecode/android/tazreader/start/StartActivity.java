@@ -410,7 +410,7 @@ public class StartActivity extends BaseActivity
                 startActivity(rateIntent);
             } else {
                 rateIntent = new Intent(Intent.ACTION_VIEW,
-                                Uri.parse("http://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID));
+                                        Uri.parse("http://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID));
                 if (rateIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(rateIntent);
                 } else {
