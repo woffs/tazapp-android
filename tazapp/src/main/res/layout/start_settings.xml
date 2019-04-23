@@ -300,11 +300,9 @@
                     android:text="@string/header_other"/>
 
             <CheckBox
-                    android:id="@+id/acraAlwaysAcceptCheckBox"
                     style="@style/SettingsCheckbox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/acra_alwaysaccept"/>
 
         </LinearLayout>
     </ScrollView>
