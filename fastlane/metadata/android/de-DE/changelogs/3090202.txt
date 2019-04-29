@@ -1,0 +1,7 @@
+Upstream:
+- Bugfix falsche Downloaddatei
+
+F-Droid-Version:
+- überflüssiges Crashlytics-Fenster entfernt
+- unnötige Berechtigung REQUEST_INSTALL_PACKAGES entfernt
+- Acralyzer-Reste entfernt
