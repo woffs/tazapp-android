@@ -220,7 +220,7 @@ android {
         def helpDeleteZipTaskName = "helpDeleteZipFile${flavor.name.capitalize()}"
         def helpDeleteDirTaskName = "helpDeleteDir${flavor.name.capitalize()}"
         def downloadTask = task "${helpDownloadTaskName}"(type: Download) {
-            sourceUrl = "http://dl.taz.de/down/help/${flavor.name}.zip"
+            sourceUrl = "https://dl.taz.de/down/help/${flavor.name}.zip"
             target = localZip
         }
         def deleteZipTask = task "${helpDeleteZipTaskName}"(type: Delete) {
