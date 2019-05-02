@@ -9,13 +9,12 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 
-import com.artifex.mupdfdemo.Annotation.Type;
-import com.artifex.mupdfdemo.CancellableTaskDefinition;
-import com.artifex.mupdfdemo.LinkInfo;
-import com.artifex.mupdfdemo.MuPDFCancellableTaskDefinition;
-import com.artifex.mupdfdemo.MuPDFCore;
-import com.artifex.mupdfdemo.PageView;
-import com.artifex.mupdfdemo.TextWord;
+import com.artifex.mupdf.fitz.Cookie;
+import com.artifex.mupdf.fitz.Link;
+import com.artifex.mupdf.viewer.CancellableTaskDefinition;
+import com.artifex.mupdf.viewer.MuPDFCancellableTaskDefinition;
+import com.artifex.mupdf.viewer.MuPDFCore;
+import com.artifex.mupdf.viewer.PageView;
 
 import de.thecode.android.tazreader.data.Paper.Plist.Page;
 import de.thecode.android.tazreader.reader.ReaderActivity;
@@ -78,7 +77,7 @@ public class TAZPageView extends PageView {
         return new MuPDFCancellableTaskDefinition<Void, Void>(mCore) {
 
             @Override
-            public Void doInBackground(MuPDFCore.Cookie cookie, Void... params) {
+            public Void doInBackground(Cookie cookie, Void... params) {
                 Timber.d("cookie: %s, params: %s",cookie, params);
                 // Workaround bug in Android Honeycomb 3.x, where the bitmap generation count
                 // is not incremented when drawing.
@@ -95,7 +94,7 @@ public class TAZPageView extends PageView {
         return new MuPDFCancellableTaskDefinition<Void, Void>(mCore) {
 
             @Override
-            public Void doInBackground(MuPDFCore.Cookie cookie, Void... params) {
+            public Void doInBackground(Cookie cookie, Void... params) {
                 Timber.d("cookie: %s, params: %s",cookie, params);
                 // Workaround bug in Android Honeycomb 3.x, where the bitmap generation count
                 // is not incremented when drawing.
@@ -107,23 +106,10 @@ public class TAZPageView extends PageView {
     }
 
     @Override
-    protected LinkInfo[] getLinkInfo() {
+    protected Link[] getLinkInfo() {
 
         // TODO Auto-generated method stub
         return null;
-    }
-
-    @Override
-    protected TextWord[][] getText() {
-
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    protected void addMarkup(PointF[] quadPoints, Type type) {
-        Timber.d("quadPoints: %s, type: %s",quadPoints, type);
-        // TODO Auto-generated method stub
     }
 
     public class LoadCoreTask extends AsyncTask<Void, Void, TAZMuPDFCore> {

@@ -11,8 +11,8 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Adapter;
 
-import com.artifex.mupdfdemo.PageView;
-import com.artifex.mupdfdemo.ReaderView;
+import com.artifex.mupdf.viewer.PageView;
+import com.artifex.mupdf.viewer.ReaderView;
 
 import de.thecode.android.tazreader.R;
 import de.thecode.android.tazreader.data.Paper.Plist.Page;

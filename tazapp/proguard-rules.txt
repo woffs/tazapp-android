@@ -10,7 +10,7 @@
 -dontwarn javax.inject.**
 -dontwarn sun.misc.Unsafe
 
--keep class com.artifex.mupdfdemo.** {*;}
+-keep class com.artifex.mupdf.viewer.** {*;}
 
 -keepclassmembers class * {
     @android.webkit.JavascriptInterface <methods>;

@@ -3,7 +3,7 @@ package de.thecode.android.tazreader.reader.page;
 import android.content.Context;
 import android.graphics.PointF;
 
-import com.artifex.mupdfdemo.MuPDFCore;
+import com.artifex.mupdf.viewer.MuPDFCore;
 
 import timber.log.Timber;
 

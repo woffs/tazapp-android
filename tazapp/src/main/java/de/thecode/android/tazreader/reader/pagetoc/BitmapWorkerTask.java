@@ -9,7 +9,8 @@ import android.os.AsyncTask;
 import android.util.LruCache;
 import android.widget.ImageView;
 
-import com.artifex.mupdfdemo.MuPDFCore;
+import com.artifex.mupdf.viewer.MuPDFCore;
+import com.artifex.mupdf.fitz.Cookie;
 
 import de.thecode.android.tazreader.R;
 import de.thecode.android.tazreader.data.FileCachePDFThumbHelper;
@@ -47,7 +48,7 @@ public class BitmapWorkerTask extends AsyncTask<Void, Void, Bitmap> {
     private final WeakReference<ImageView> imageViewReference;
     private final Paper.Plist.Page         page;
     private final String                   key;
-    private       MuPDFCore.Cookie         cookie;
+    private       Cookie                   cookie;
 
     private final int                     mThumbnailImageHeight;
     private final int                     mThumbnailImageWidth;
