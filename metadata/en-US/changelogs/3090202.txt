@@ -1,0 +1,7 @@
+Upstream:
+- fix download: wrong file
+
+F-Droid version:
+- remove obsolete crashlytics dialog
+- remove obsolete permission REQUEST_INSTALL_PACKAGES
+- remove acralyzer leftovers
