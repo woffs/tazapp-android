@@ -6,7 +6,7 @@ Optimiert als "aPaper" für Android bietet die App komfortables Lesen der gesamt
 
 Der Bezug ist über ein Abonnement möglich. Kostenlose Demoausgaben bieten die Möglichkeit alle Funktionen zu testen.
 
-Weitere Infos unter [http://www.taz.de/android](http://www.taz.de/android)
+Weitere Infos unter <https://www.taz.de/android>
 
 
 <a href="https://play.google.com/store/apps/details?id=de.thecode.android.tazreader">
