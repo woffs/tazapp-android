@@ -208,7 +208,7 @@ android {
         variant.outputs.each { output ->
             def baseAbiVersionCode = abiCodes.get(output.getFilter(com.android.build.OutputFile.ABI))
             output.versionCodeOverride = baseAbiVersionCode * 100000000 + variant.versionCode
-            output.versionNameOverride = variant.versionName + " " + abiCodes.find { it.value == baseAbiVersionCode }.key
+            output.versionNameOverride = variant.versionName + "+fdroid+" + abiCodes.find { it.value == baseAbiVersionCode }.key
         }
     }
 
