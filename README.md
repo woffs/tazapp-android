@@ -11,6 +11,10 @@ Weitere Infos unter [http://www.taz.de/android](http://www.taz.de/android)
 
 [![Android app on Google Play](https://developer.android.com/images/brand/de_app_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=de.thecode.android.tazreader)
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on-de.png"
+    alt="Jetzt bei F-Droid"
+    height="91">](https://f-droid.org/packages/de.thecode.android.tazreader)
+
 # Lizenz
 
     taz.app
