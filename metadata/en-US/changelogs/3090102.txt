@@ -1,0 +1,12 @@
+Upstream:
+- smarter download dialog
+- fix download error display
+- show sync error
+
+F-Droid version:
+- removed crashlytics, analyticswrapper, timbertreeutils
+- changed mail contact: app@taz.de -> app-fdroid@taz.de
+- removed app update code
+- supplied screenshots und description
+- update impressum
+- remove binary blobs

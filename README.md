@@ -2,14 +2,23 @@
 
 Täglich die neueste Ausgabe der "tageszeitung" (taz) direkt auf Ihr Smartphone oder Tablet. 
 
-Optimiert als "aPaper" für Android bietet die App komfortables Lesen der gesamten taz als PDF oder als optimierten Text - mit allen Regionalausgaben, der sonntaz am Wochenende und einmal im Monat "Le Monde diplomatique". Für Abonnementen steht außerdem ein Archiv mit allen Ausgaben seit 2011 zur Verfügung.
+Optimiert als "aPaper" für Android bietet die App komfortables Lesen der gesamten taz als PDF oder als optimierten Text - mit allen Regionalausgaben, der taz am Wochenende und einmal im Monat "Le Monde diplomatique". Für Abonnementen steht außerdem ein Archiv mit allen Ausgaben seit 2011 zur Verfügung.
 
 Der Bezug ist über ein Abonnement möglich. Kostenlose Demoausgaben bieten die Möglichkeit alle Funktionen zu testen.
 
-Weitere Infos unter [http://www.taz.de/android](http://www.taz.de/android)
+Weitere Infos unter <https://www.taz.de/android>
 
 
-[![Android app on Google Play](https://developer.android.com/images/brand/de_app_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=de.thecode.android.tazreader)
+<a href="https://play.google.com/store/apps/details?id=de.thecode.android.tazreader">
+    <img alt="Get it on Google Play"
+        height="80"
+        src="https://user-images.githubusercontent.com/15004217/36810046-fa306856-1cc9-11e8-808e-6eb8a81783c7.png" />
+        </a>  
+<a href="https://f-droid.org/en/packages/de.thecode.android.tazreader">
+    <img alt="Get it on F-Droid"
+        height="80"
+        src="https://user-images.githubusercontent.com/15004217/36919296-19b8524e-1e5d-11e8-8962-48463b1cec8a.png" />
+        </a>
 
 # Lizenz
 
