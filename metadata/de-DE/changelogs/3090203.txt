@@ -1,0 +1,8 @@
+F-Droid-Version:
+- https für taz.de urls
+- update de-DE descriptions
+- verschieben von fastlane/metadata/android -> metadata
+- verschieben von screenshots und title nach en-US
+- hinzufügen von en-US changelogs
+- versionBuild an versionName anhängen
+- sonntaz -> taz am Wochenende
