@@ -91,7 +91,7 @@ android {
         minSdkVersion minSdkVer
         targetSdkVersion targetSdkVer
         versionCode versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100 + versionBuild
-        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [eventBusIndex        : 'de.thecode.android.tazreader.eventbus.EventBusIndex',
@@ -208,7 +208,7 @@ android {
         variant.outputs.each { output ->
             def baseAbiVersionCode = abiCodes.get(output.getFilter(com.android.build.OutputFile.ABI))
             output.versionCodeOverride = baseAbiVersionCode * 100000000 + variant.versionCode
-            output.versionNameOverride = variant.versionName + " " + abiCodes.find { it.value == baseAbiVersionCode }.key
+            output.versionNameOverride = variant.versionName + "+fdroid+" + abiCodes.find { it.value == baseAbiVersionCode }.key
         }
     }
 
