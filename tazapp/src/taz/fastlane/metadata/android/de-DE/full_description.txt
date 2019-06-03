@@ -2,7 +2,7 @@ taz, die tageszeitung - Ausgaben zum Download und Offline-Lesen auf Smartphone o
 
 Optimiert für Android bietet die App komfortables Lesen der gesamten taz als PDF oder als optimierten Text - mit allen Regionalausgaben, der taz am Wochenende und einmal im Monat "Le Monde diplomatique". Es steht außerdem ein Archiv mit allen Ausgaben seit 2011 zur Verfügung.
 
-Zur Nutzung ist ein Abonnement nötig, was unter https://www.taz.de/!p4350/ bestellt werden kann. Kostenlose Demoausgaben bieten jedoch die Möglichkeit, alle Funktionen zu testen. Weitere Infos unter https://taz.de/android
+Zur Nutzung ist ein Abonnement nötig, was <a href="https://www.taz.de/!p4350/">auf taz.de</a> bestellt werden kann. Kostenlose Demoausgaben bieten jedoch die Möglichkeit, alle Funktionen zu testen.  Weitere Infos unter <a href="https://taz.de/android">taz.de/android</a>.
 
 Für diese F-Droid-kompatible Variante der App wurden u.a. Google-Push-Benachrichtigungen und automatische Bugreports entfernt.
 
