@@ -1,0 +1,2 @@
+Upstream:
+- Spoken texts, if available, can now be played for articles. This is the case for LMd.
