@@ -1,0 +1,2 @@
+Upstream:
+- fix crash when opening the 2019-06-26 paper
