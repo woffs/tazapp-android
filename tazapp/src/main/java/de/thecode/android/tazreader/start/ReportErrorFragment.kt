@@ -36,11 +36,14 @@ class ReportErrorFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferencesFix(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.report_error_preferences)
 
-        val reportErrorPreference = findPreference(getString(R.string.pref_key_report_error))
-        reportErrorPreference.setOnPreferenceClickListener {
+        val reportErrorPreference = findPreference<Preference>(getString(R.string.pref_key_report_error))
+        reportErrorPreference?.setOnPreferenceClickListener {
             if (settings.isWriteLogfile) context?.let { context -> ErrorReporter.sendErrorMail(context) }
-            else RequestFileLogDialog.newInstance().show(fragmentManager, RequestFileLogDialog.DIALOG_FILELOG_REQUEST)
-//            if (context != null) ErrorReporter.sendErrorMail(context!!)
+            else if (isAdded) {
+                parentFragmentManager.let {
+                    RequestFileLogDialog.newInstance().show(it, RequestFileLogDialog.DIALOG_FILELOG_REQUEST)
+                }
+            }
             true
         }
     }
